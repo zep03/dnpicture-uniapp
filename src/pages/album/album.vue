@@ -22,8 +22,10 @@
 		<!-- 专辑作者结束 -->
 		<!-- 列表开始 -->
 		<view class="album_list">
-			<view class="album_item" v-for="item in wallpaper" :key="item.id">
-				<image :src="item.thumb" ></image>
+			<view class="album_item" v-for="(item, index) in wallpaper" :key="item.id">
+				<go-detail :itemList="wallpaper" :index="index">
+					<image :src="item.thumb"></image>
+				</go-detail>
 			</view>
 		</view>
 		<!-- 列表结束 -->
@@ -31,6 +33,7 @@
 </template>
 
 <script>
+	import goDetail from '@/components/goDeatail.vue'
 	export default {
 		data() {
 			return {
@@ -78,7 +81,9 @@
 				})
 			}
 		},
-		
+		components: {
+			goDetail
+		},
 		methods: {
 			getList() {
 				this.request({

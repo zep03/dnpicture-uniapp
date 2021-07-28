@@ -24,7 +24,9 @@
 			</view>
 			<view class="months_content">
 				<view class="months_item" v-for="(item, index) in months.items" :key="item.id">
-					<image :src="item.img" mode="a"></image>
+					<go-detail :itemList="months.items" :index="index">
+						<image :src="item.img"></image>
+					</go-detail>
 				</view>
 			</view>
 		</view>
@@ -35,8 +37,10 @@
 				<text> 热门 </text>
 			</view>
 			<view class="hots_content">
-				<view class="hot_item" v-for="item in hots" :key="item.id">
-					<image :src="item.img"></image>
+				<view class="hot_item" v-for="(item, index) in hots" :key="item.id">
+					<go-detail :itemList="hots" :index="index">
+						<image :src="item.img"></image>
+					</go-detail>
 				</view>
 			</view>
 		</view>
@@ -46,6 +50,7 @@
 
 <script>
 	import moment from 'moment'
+	import goDetail from '@/components/goDeatail.vue'
 	export default {
 		data() {
 			return {
@@ -77,6 +82,9 @@
 				hasMore: true
 				
 			}
+		},
+		components: {
+			goDetail
 		},
 		methods: {
 			// 获取接口的数据
