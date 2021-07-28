@@ -11,6 +11,12 @@
 				
 			}
 		},
+		mounted() {
+			// 修改页面的标题
+			uni.setNavigationBarTitle({
+				title: "分类"
+			})
+		},
 		methods: {
 			
 		}

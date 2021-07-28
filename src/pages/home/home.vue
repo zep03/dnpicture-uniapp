@@ -55,7 +55,7 @@
 						title: '专辑'
 					},
 				],
-				current: 0
+				current: 3
 			}
 		},
 		components: {
