@@ -12,9 +12,9 @@
 		<!-- 轮播图结束 -->
 		<!-- 列表开始 -->
 		<view class="album_list">
-			<view class="album_item" v-for="item in album" :key="item.id">
+			<navigator class="album_item" :url="`/pages/album/album?id=${item.id}`" v-for="item in album" :key="item.id">
 				<view class="album_img">
-					<image :src="item.cover" ></image>
+					<image mode="aspectFill" :src="item.cover" ></image>
 				</view>
 				<view class="album_info">
 					<view class="album_name">{{ item.name }}</view>
@@ -23,7 +23,7 @@
 						<view class="album_attention">关注</view>
 					</view>
 				</view>
-			</view>
+			</navigator>
 		</view>
 		<!-- 列表结束 -->
 	</scroll-view>
@@ -81,6 +81,10 @@
 					}
 					if(res.data.res.album.length === 0) {
 						this.hasMore = false
+						uni.showToast({
+							title: "没有更多数据啦",
+							icon: "none"
+						})
 						return
 					}
 					this.album = [...this.album, ...res.data.res.album]

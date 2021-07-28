@@ -1,10 +1,13 @@
 <template>
 	<scroll-view @scrolltolower="handleToLower" class="recommend_view" scroll-y="" v-if="recommends.length > 0">
-		<!-- 推荐开始 -->
+		<!-- 推荐开始 
+		 :url="`/pages/album/album?id=${item.target}`" -->
 		<view class="recommend_wrap">
-			<view class="recommend_item" :key="item.id" v-for="(item, index) in recommends">
+			<navigator class="recommend_item"
+			  url="/pages/album/album?id=5dea218ae7bce73965510333"
+			 :key="item.id" v-for="(item, index) in recommends">
 				<image :src="item.thumb" mode="widthFix"></image>
-			</view>
+			</navigator>
 		</view>
 		<!-- 推荐结束 -->
 		<!-- 月份开始 -->
@@ -86,6 +89,10 @@
 					// 判断是否还有下一页数据
 					if(res.data.res.vertical.length === 0) {
 						this.hasMore = false
+						uni.showToast({
+							title: "没有更多数据啦",
+							icon: "none"
+						})
 						return
 					}
 					if(this.recommends.length ===0) {
