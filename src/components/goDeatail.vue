@@ -1,6 +1,5 @@
 <template>
 	<view @click="handleClick">
-		组件
 		<slot></slot>
 	</view>
 </template>

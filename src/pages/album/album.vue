@@ -24,7 +24,7 @@
 		<view class="album_list">
 			<view class="album_item" v-for="(item, index) in wallpaper" :key="item.id">
 				<go-detail :itemList="wallpaper" :index="index">
-					<image :src="item.thumb"></image>
+					<image :src="item.img"></image>
 				</go-detail>
 			</view>
 		</view>
@@ -65,6 +65,7 @@
 		onLoad(options) {
 			console.log(options)
 			this.id = options.id
+			// this.id = "5e59075ae7bce73965512bd6"
 			this.getList()
 		},
 		// 页面触底， 上拉加载下一页事件
@@ -120,7 +121,7 @@
 				for(var i=0; i<iarray.length; i++) {
 					var index = Math.floor(Math.random()*10)
 					// iarray[i].img = "https://img2.baidu.com/it/u=1814565549,2954866278&fm=26&fmt=auto&gp=0.jpg"
-					iarray[i].thumb = this.myImg[index]
+					iarray[i].img = this.myImg[index]
 					
 				}
 			},

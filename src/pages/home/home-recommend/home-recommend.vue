@@ -116,6 +116,7 @@
 					}
 					
 					// 获取热门数据的列表
+					this.addUser(res.data.res.vertical)
 					this.hots = [...this.hots, ...res.data.res.vertical]
 					this.changeImg(this.hots)
 				}).catch((err) => {
@@ -129,6 +130,18 @@
 					// iarray[i].img = "https://img2.baidu.com/it/u=1814565549,2954866278&fm=26&fmt=auto&gp=0.jpg"
 					iarray[i].img = this.myImg[index]
 					
+				}
+			},
+			// 改变接口的,增加user对象里面放avatar
+			addUser (iarray) {
+				for(var i=0; i<iarray.length; i++) {
+					var index = Math.floor(Math.random()*10)
+					// iarray[i].img = "https://img2.baidu.com/it/u=1814565549,2954866278&fm=26&fmt=auto&gp=0.jpg"
+					var user = {
+						avatar: this.myImg[index],
+						name: "zep"
+					}
+					iarray[i].user = user
 				}
 			},
 			// 滚动条触底事件
