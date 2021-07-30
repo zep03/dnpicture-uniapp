@@ -64,6 +64,11 @@
 			</view>
 		</view>
 		<!-- 最新评论 结束 -->
+		<!-- 下载按钮 开始 -->
+		<view class="download">
+			<view class="download_btn" @click="handleDownload">下载图片</view>
+		</view>
+		<!-- 下载按钮 结束 -->
 	</view>
 </template>
 
@@ -152,6 +157,31 @@
 						icon: "none"
 					})
 				}
+			},
+			
+			// 点击下载图片
+			async handleDownload () {
+				await uni.showLoading({
+					title: "下载中"
+				})
+				
+				// 1. 将图片下载到小程序的内存中
+				const res = await uni.downloadFile({
+					url: this.imgDetail.img
+				})
+				console.log(res)
+				const {tempFilePath} = res[1]
+				// 2. 将小程序内存中的临时文件下载到本地上
+				const res2 = await uni.saveImageToPhotosAlbum({
+					filePath: tempFilePath
+				})
+				// 3. 提示用户下载成功
+				console.log("下载成功", res2)
+				uni.hideLoading()
+				uni.showToast({
+					title: "下载成功"
+					// icon
+				})
 			}
 		}
 	}
@@ -211,6 +241,7 @@
 	}
 
 	.comment_hot {
+		margin-bottom: 120rpx;
 		.comment_title {
 			padding: 15rpx;
 
@@ -287,6 +318,28 @@
 					}
 				}
 			}
+		}
+	}
+	
+	.download {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 120rpx;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		.download_btn {
+			width: 90%;
+			height: 80%;
+			background-color: $color;
+			color: #FFFFFF;
+			font-size: 40rpx;
+			font-weight: 600;
+			display: flex;
+			justify-content: center;
+			align-items: center;
 		}
 	}
 </style>
