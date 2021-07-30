@@ -7,6 +7,16 @@
 			}
 		},
 		{
+		    "path" : "pages/demo/demo",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "demo",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		},
+		
+		{
 			"path": "pages/album/album",
 			"style": {
 				"navigationBarTitleText": "专辑详情",
@@ -80,7 +90,8 @@
 			}
 
 		}
-	],
+	    
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "懂你找图",

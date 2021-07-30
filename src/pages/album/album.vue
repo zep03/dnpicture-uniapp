@@ -24,7 +24,7 @@
 		<view class="album_list">
 			<view class="album_item" v-for="(item, index) in wallpaper" :key="item.id">
 				<go-detail :itemList="wallpaper" :index="index">
-					<image :src="item.img"></image>
+					<image :src="item.img" mode="aspectFill"></image>
 				</go-detail>
 			</view>
 		</view>
@@ -190,7 +190,7 @@
 			width: 33.33%;
 			border: 3rpx solid #FFFFFF;
 			image {
-				width: 100%;
+				// width: 100%;
 				height: 200rpx;
 			}
 		}
