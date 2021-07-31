@@ -101,6 +101,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/videoPlay/videoPlay",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "视频播放",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "white",

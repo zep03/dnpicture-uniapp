@@ -1,6 +1,7 @@
 <template>
 	<scroll-view @scrolltolower="handleScrollToLower" scroll-y enable-flex class="video_main">
-		<view class="video_item" v-for="item in videowp" :key="item.id">
+		<view class="video_item" v-for="item in videowp" :key="item.id"
+		@click="handleGoVideo(item)">
 			<image :src="item.img" mode="widthFix"></image>
 		</view>
 	</scroll-view>
@@ -60,6 +61,14 @@
 						icon: "none"
 					})
 				}
+			},
+			handleGoVideo(item){
+				// 1. 将数据存到全局共享中
+				getApp().globalData.video = item
+				// 2. 页面跳转
+				uni.navigateTo({
+					url: '/pages/videoPlay/videoPlay'
+				})
 			}
 		}
 	}
